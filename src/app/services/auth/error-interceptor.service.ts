@@ -29,8 +29,7 @@ export class ErrorInterceptorService implements HttpInterceptor{
             );
           });
         } 
-        // Siempre devuelve el error lanzado
-        return throwError(() => new Error('Algo falló. Por favor intente de nuevo.'));
+        return throwError("");
       })
     );
   }

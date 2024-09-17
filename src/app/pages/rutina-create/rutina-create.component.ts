@@ -27,7 +27,11 @@ export class RutinaCreateComponent {
   
   ngOnInit(): void {
     this.cargarRutina();
-    this.rutinaServices.getRutina().subscribe();
+    const userId = <number><unknown>sessionStorage.getItem('id');
+
+    this.rutinaServices.getRutina().subscribe(rutina => {
+      this.rutina = rutina.filter( (auxRutina) => auxRutina.id_usuario == userId);
+    })
   }
 
   rutinaForm = this.fb.group({

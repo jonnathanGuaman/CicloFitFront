@@ -28,7 +28,7 @@ export class RegisterComponent {
     nombre:['',Validators.required],
     apellido:['',Validators.required],
     cedula:['',Validators.required],
-    fechaNacimiento:['',Validators.required],
+    fecha_nacimiento:['',Validators.required],
   })
 
   registoAuth = this.fb.group({
@@ -48,7 +48,7 @@ export class RegisterComponent {
   }
 
   get fechaNacimiento(){
-    return this.registerForm.controls.fechaNacimiento;
+    return this.registerForm.controls.fecha_nacimiento;
   }
 
   get email(){
@@ -78,8 +78,8 @@ export class RegisterComponent {
           this.auxAuth.password = this.password.value!
           this.authService.registerAuth(this.auxAuth).subscribe()
         },
-        error: (errorData) => {
-          console.error(errorData)
+        error: () => {
+          Swal.fire('Error','Cedula o correo ya registrados','error')
         },
         complete: () => {
           Swal.fire('Usuario registrado', `Usuario registrado con exito`, 'success').then(()=>{
@@ -95,7 +95,6 @@ export class RegisterComponent {
     }else{
       this.registerForm.markAllAsTouched();
       this.registoAuth.markAllAsTouched();
-      alert("Error al ingresar los datos");
     }
   }
 }

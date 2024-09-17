@@ -32,7 +32,9 @@ export class DashboardComponent implements OnInit{
         }
       },
     )
-    this.rutinaServices.getRutina().subscribe(rutina => this.rutina = rutina);
+    this.rutinaServices.getRutina().subscribe(rutina => {
+      this.rutina = rutina.filter( (auxRutina) => auxRutina.id_usuario == <number><unknown>sessionStorage.getItem('id'));
+    })
   }
   
   cargarEjercicioByRutina(){

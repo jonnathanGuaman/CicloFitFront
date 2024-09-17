@@ -18,11 +18,15 @@ export class EjercicioCreateComponent implements OnInit{
   rutina:Rutina[]=[];
   idRutinaSelec!:number;
 
-  constructor(private activedRouter:ActivatedRoute, private router:Router, private fb:FormBuilder, private rutinaService:RutinaService, private ejercicioService:EjerciciosService){}
+  constructor(private activedRouter:ActivatedRoute, private router:Router, private fb:FormBuilder, private rutinaServices:RutinaService, private ejercicioService:EjerciciosService){}
   
   ngOnInit(): void {
     this.cargarEjercicio();
-    this.rutinaService.getRutina().subscribe(rutina => this.rutina = rutina)
+    const userId = <number><unknown>sessionStorage.getItem('id');
+
+    this.rutinaServices.getRutina().subscribe(rutina => {
+      this.rutina = rutina.filter( (auxRutina) => auxRutina.id_usuario == userId);
+    })
   }
   ejercicioForm = this.fb.group({
     idEjercicio:[''],

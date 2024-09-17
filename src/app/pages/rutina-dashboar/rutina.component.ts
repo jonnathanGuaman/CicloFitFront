@@ -18,7 +18,11 @@ export class RutinaComponent implements OnInit{
   constructor(private rutinaServices:RutinaService){}
 
   ngOnInit(): void {
-    this.rutinaServices.getRutina().subscribe(rutina => this.rutina = rutina)
+    const userId = <number><unknown>sessionStorage.getItem('id');
+
+    this.rutinaServices.getRutina().subscribe(rutina => {
+      this.rutina = rutina.filter( (auxRutina) => auxRutina.id_usuario == userId);
+    })
   }
   
   eliminar(id=0){

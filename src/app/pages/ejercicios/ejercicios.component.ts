@@ -12,15 +12,22 @@ import Swal from 'sweetalert2';
 })
 export class EjerciciosComponent implements OnInit {
 
-  constructor(private ejercicioSerice:EjerciciosService,private rutinaService:RutinaService){
+  constructor(private ejercicioSerice:EjerciciosService,private rutinaServices:RutinaService){
   }
   
   rutina:Rutina[]=[];
   ejercicio:Ejercicio[]=[]
 
   ngOnInit(): void {
-    this.rutinaService.getRutina().subscribe(rutina => this.rutina = rutina)
-    this.ejercicioSerice.getEjercicio().subscribe(ejercicio => this.ejercicio = ejercicio);
+    const userId = <number><unknown>sessionStorage.getItem('id');
+
+    this.rutinaServices.getRutina().subscribe(rutina => {
+      this.rutina = rutina.filter( (auxRutina) => auxRutina.id_usuario == userId);
+      const rutinaIds = this.rutina.map(r => r.id);
+      this.ejercicioSerice.getEjercicio().subscribe(ejercicio => {
+      this.ejercicio = ejercicio.filter((ej) => rutinaIds.includes(ej.id_rutina))
+    });
+    })
   }
 
   buscarRutina(id:number):string{
