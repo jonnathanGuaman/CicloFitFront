@@ -1,0 +1,8 @@
+.login{
+    margin-top: 70px;
+}
+.botones{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

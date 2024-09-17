@@ -1,0 +1,38 @@
+
+@media (max-width: 932px) {
+    #titilo-grid{
+       display: grid;
+       grid-template-columns: 0.5fr 1fr;
+       width: 100%;
+       background-color: rgb(143, 143, 140);
+    }
+
+    h1{
+        padding-top: 1.5vh;
+        height: 50px;
+    }
+    .offcanvas{
+        width: 50% !important;
+    }
+
+    .navbar{
+        width: 25%;   
+        background-color: rgb(143, 143, 140) !important;
+    }
+
+    .titulo-element-Login{
+        text-align: center;
+        background-color: rgb(143, 143, 140);
+    }
+  }
+
+  @media (min-width: 933px) {
+    #pagina-responsive {
+        display: none;
+    }
+    .titulo-element-Login{
+        text-align: center;
+        background-color: rgb(143, 143, 140);
+    }
+    
+}

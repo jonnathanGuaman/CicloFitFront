@@ -1,0 +1,19 @@
+<div class="container ejercicio">
+    <div class="card mb-3" *ngFor="let auxEjercicio of ejercicio">
+        <h5 class="card-header">{{auxEjercicio.nombreEjercicio}}</h5>
+        <div class="card-body">
+          <p class="card-text">Series del ejercicio: {{auxEjercicio.series}}</p>
+          <p class="card-text">Peso alcanzado: {{auxEjercicio.pesoAlcanzado}}</p>
+          <p class="card-text">Dia que se realiza el ejercicio: {{auxEjercicio.diaSemana}}</p>
+          <p class="card-text">Rutina a la que pertenece: {{buscarRutina(auxEjercicio.id_rutina)}}</p>
+          <div class="actioButton">
+            <a [routerLink]="['/ejercicioCreate/',auxEjercicio.idEjercicio]" class="btn btn-primary me-4">Editar</a>
+            <a (click)="eliminarEjercicio(auxEjercicio.idEjercicio)" class="btn btn-danger">Eliminar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="">
+        <button type="button" routerLink="/ejercicioCreate" class="btn btn-outline-success">Crear nuevo ejercicio</button>
+    </div>
+</div>

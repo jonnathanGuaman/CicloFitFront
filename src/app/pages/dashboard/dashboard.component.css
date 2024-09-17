@@ -1,0 +1,32 @@
+@media (max-width: 932px) {
+    
+    .dashboard{
+        margin-top: 50px;
+    }
+
+    .rutina-element-dinamicos{
+        width: 55px;
+        height: 25px;
+        margin: 10% 4% ;
+        text-align: center;
+    }
+    .rutina-element-staticos{
+       margin-top: 7px;
+       margin-left: 20%;
+
+    }
+    .rutina-element-staticos1{
+        margin-top: 6px;
+     }
+     .rutina-element-staticos2{
+        margin-top: 6px;
+        margin-left: 25%;
+     }
+     .titulos{
+        text-align: center;
+     }
+}
+
+.idEjercicio{
+   display: none;
+}

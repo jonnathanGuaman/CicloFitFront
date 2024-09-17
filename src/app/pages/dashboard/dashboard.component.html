@@ -1,0 +1,42 @@
+<app-nav></app-nav>
+<div class="dashboard container">
+
+    <div class="input-group">
+        <select class="form-select" name="rutina" id="rutina" [(ngModel)]="rutinaSelect">
+            <option #diaSemana *ngFor="let auxRutina of rutina" [value]="auxRutina.id" >{{auxRutina.nombreRutina}}</option>
+        </select>
+        <button (click)="cargarEjercicioByRutina()" class="btn btn-primary" type="button">Button</button>
+      </div>
+
+    <table class="table table-bordered">
+        <thead class="titulos">
+            <tr>
+                <th class="border-end border-start col-6">Ejercicio</th>
+                <th class="border-end">Series</th>
+                <th class="border-end">Peso</th>
+                <th class="border-end">Reps</th>
+                <th class="border-end">Act</th>
+            </tr>
+        </thead>  
+        <tbody>
+            <!--Arreglar todo esto-->
+            <tr class="tr" *ngFor="let auxrutina of ejercicioFiltrado, let i = index">
+               <td class="border-end border-start">
+                    <p  class="rutina-element-staticos1" id="nombreEjercicio">{{auxrutina.nombreEjercicio}}</p>
+                </td>
+                <td class="border-end">
+                    <p  class="rutina-element-staticos2" id="series">{{auxrutina.series}}</p>
+                </td>
+                <td class="border-end">
+                    <input [(ngModel)]="pesoAlcanzado" name="pesoAlcanzado" id="pesoAlcanzado" type="text" class="rutina-element-dinamicos border" value="" [placeholder]="auxrutina.pesoAlcanzado">
+                </td>
+                <td class="border-end">
+                    <input [(ngModel)]="repsEnviar" name="reps" id="reps" type="number" class="rutina-element-dinamicos border" value="" [placeholder]="auxrutina.reps">
+                </td>
+                <td>
+                    <button (click)="guardarCambio(auxrutina.idEjercicio)" class="btn btn-success">Save</button>
+                </td>
+            </tr>
+        </tbody>  
+    </table>
+</div>

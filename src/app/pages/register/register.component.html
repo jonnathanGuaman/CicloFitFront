@@ -1,0 +1,76 @@
+<div class="container">
+    <form class="row g-3" [formGroup]="registerForm">
+        <div class="col-md-12">
+            <label for="inputEmail4" class="form-label">Nombre</label>
+            <input formControlName="nombre" type="text" class="form-control" id="nombre">
+            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+                class="text-danger">
+              <div *ngIf="nombre.hasError('required')">
+                  El nombre es requerido
+              </div>
+            </div>
+        </div>
+
+          <div class="col-md-12">
+            <label for="inputEmail4" class="form-label">Apellido</label>
+            <input formControlName="apellido" type="text" class="form-control" id="apellido">
+            <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
+                class="text-danger">
+              <div *ngIf="apellido.hasError('required')">
+                  El apellido es requerido
+              </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Cedula</label>
+          <input formControlName="cedula" type="text" class="form-control" id="inputAddress">
+            <div *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)"
+                class="text-danger">
+                <div *ngIf="cedula.hasError('required')">
+                    La cedula es requerida
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Fecha de nacimiento</label>
+          <input formControlName="fechaNacimiento" type="date" class="form-control" id="inputAddress2">
+            <div *ngIf="fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched)"
+                class="text-danger">
+                <div *ngIf="fechaNacimiento.hasError('required')">
+                    La fecha de nacimiento es requerida
+                </div>
+            </div>
+        </div>
+      </form>
+
+      <form class="row g-3" [formGroup]="registoAuth" >
+        <div class="col-md-12">
+            <label for="inputEmail4" class="form-label">Nombre de usuario</label>
+            <input formControlName="username" type="email" class="form-control" id="inputEmail4" placeholder="jonnathan@gmail.com">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                class="text-danger">
+              <div *ngIf="email.hasError('required')">
+                  El email es requerido
+              </div>
+              <div *ngIf="email.hasError('email')">
+                  Email invalido
+              </div>
+            </div>
+          </div>
+          <div class="input-group">
+              <span class="input-group-text" id="basic-addon3">Contraseña</span>
+              <input formControlName="password" type={{variableContrasena}} class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+              <button class="btn btn-outline-secondary" type="button" (click)="botonParaVerContrasena()" id="button-addon2">{{ showPassword ? 'Ocultar' : 'Ver' }}</button>
+          </div>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                class="text-danger">
+              <div *ngIf="password.hasError('required')">
+                  La contraseña es requerida
+              </div>
+          </div>
+      </form>
+      <div class="col-12 mt-4">
+        <button type="submit" (click)="registro()" class="btn btn-primary">Registrarse</button>
+      </div>
+</div>

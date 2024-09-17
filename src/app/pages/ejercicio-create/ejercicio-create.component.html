@@ -1,0 +1,66 @@
+<div class="col-md-12 container ejercicio-create">
+    <form [formGroup]="ejercicioForm">
+        <div class="col-12">
+            <label for="inputAddress" class="">Dia de la semana</label>
+            <select formControlName="diaSemana" name="dia" id="dia" class="form-select">
+                <option #diaSemana *ngFor="let auxDias of dias" [value]="auxDias" >{{auxDias}}</option>
+            </select>
+            <div *ngIf="diaSemana.invalid && (diaSemana.dirty || diaSemana.touched)" class="text-danger">
+                <div *ngIf="diaSemana.hasError('required')">
+                    Este campo es requerido
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-12">
+            <label for="inputAddress" class="">Rutina</label>
+            <select formControlName="id_rutina" name="rutina" id="rutina" class="form-select">
+                <option #diaSemana *ngFor="let auxRutina of rutina" [value]="auxRutina.id" >{{auxRutina.nombreRutina}}</option>
+            </select>
+            <div *ngIf="id_rutina.invalid && (id_rutina.dirty || id_rutina.touched)" class="text-danger">
+                <div *ngIf="id_rutina.hasError('required')">
+                    Este campo es requerido
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <label for="inputEmail4" class="form-label">Nombre del ejercicio</label>
+            <input formControlName="nombreEjercicio" type="text" class="form-control" name="nombreEjercicio" id="nombreEjercicio" >
+            <div *ngIf="nombreEjercicio.invalid && (nombreEjercicio.dirty || nombreEjercicio.touched)" class="text-danger">
+                <div *ngIf="nombreEjercicio.hasError('required')">
+                    Este campo es requerido
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Repeticiones</label>
+            <input formControlName="reps" type="number" class="form-control" name="reps" id="reps" >
+            
+        </div>
+    
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Peso alcanzado</label>
+            <input formControlName="pesoAlcanzado" type="text" class="form-control" name="peso" id="peso" >
+            
+        </div>
+    
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Cantidad de series</label>
+            <input formControlName="series" type="number" class="form-control" name="series" id="series" >
+            <div *ngIf="series.invalid && (series.dirty || series.touched)" class="text-danger">
+                <div *ngIf="series.hasError('required')">
+                    Este campo es requerido
+                </div>
+            </div>
+        </div>
+
+        <div class="actioButton  mt-4">
+            <button (click)="crearEjercicio()" class="btn btn-primary me-4">Guardar</button>
+            <button (click)="cancelar()" class="btn btn-danger">Cancelar</button>
+        </div>
+    </form>
+</div>
+
+    

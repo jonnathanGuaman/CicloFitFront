@@ -1,0 +1,22 @@
+
+<div class="container rutina">
+    
+    <div class="card card-rutinas mb-3"  *ngFor="let auxrutina of rutina">
+      <div class="card-header">
+        <h5>{{auxrutina.nombreRutina}}</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Fecha de creacion: {{auxrutina.fechaCreacion | date:'yyyy-MM-dd'}}</p>
+        <p class="card-text">Dias de entrenamiento: {{auxrutina.diasEntrenamiento}}</p>
+          <div class="actionButtons">
+            <button type="button" class="btn btn-primary me-2" [routerLink]="['/rutinaCreate/',auxrutina.id]">Editar</button>
+            <a (click)="eliminar(auxrutina.id)" class="btn btn-danger me-2">Eliminar</a>
+            <a class="btn btn-success" routerLink="/ejercicios">Añadir Ejercicio</a>
+          </div>
+      </div>
+    </div>
+
+    <div class="">
+        <button type="button" routerLink="/rutinaCreate" class="btn btn-outline-success">Crear nueva rutina</button>
+    </div>
+</div>

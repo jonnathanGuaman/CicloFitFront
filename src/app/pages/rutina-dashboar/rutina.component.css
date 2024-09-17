@@ -1,0 +1,7 @@
+.rutina{
+    margin-top: 75px;
+}
+.actionButtons{
+    display: flex;
+    justify-content: center;
+}

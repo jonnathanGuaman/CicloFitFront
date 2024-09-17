@@ -1,0 +1,28 @@
+<div class="container rutina">
+    <div class="rutina-crete">
+        <form class="row g-3" [formGroup]="rutinaForm">
+            <div class="col-md-12">
+                <label for="inputEmail4" class="form-label" >Ingrese la cantidad de dias que va a entrenar</label>
+                <input formControlName="diasDeEntreno" type="number" class="form-control" id="diasEntreno" name="diasDeEntreno">
+                <div *ngIf="diasDeEntreno.invalid && (diasDeEntreno.dirty || diasDeEntreno.touched)" class="text-danger">
+                        Ingrese un numero entre el 3 y el 6
+                </div>
+            </div>
+    
+            <div class="col-md-12">
+                <label for="inputEmail4" class="form-label">Nombre de la rutina</label>
+                <input formControlName="nombreRutina" type="text" class="form-control" id="nombre" name="nombreRutina">
+                <div *ngIf="nombreRutina.invalid && (nombreRutina.dirty || nombreRutina.touched)" class="text-danger">
+                    <div *ngIf="nombreRutina.hasError('required')">
+                        Este campo es requerido
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-12 mt-4 buttonAction">
+                <button (click)="guardar()" type="button" class="btn btn-primary me-4">Guardar</button>
+                <button (click)="accionbtnCancelar()" type="submit" class="btn btn-danger">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
